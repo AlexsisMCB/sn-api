@@ -13,8 +13,8 @@ const UserSchema = new Schema(
             required: true,
             unique: true,
             match: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
-        }
-        /*thoughts: [
+        },
+        thoughts: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'Thought'
@@ -25,13 +25,19 @@ const UserSchema = new Schema(
                 type: Schema.Types.ObjectId,
                 ref: 'User'
             }
-        ]*/
+        ]
+    },
+    {
+        toJSON: {
+            virtuals: true
+        },
+        id: false
     }
 );
 
-/*UserSchema.virtual('friendCount').get(function() {
+UserSchema.virtual('friendCount').get(function() {
     return this.friends.length;
-});*/
+});
 
 const User = model('User', UserSchema);
 
