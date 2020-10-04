@@ -12,13 +12,10 @@ const ReactionSchema = new Schema(
             required: true,
             maxlength: 280
         },
-        username: [
-            {
-                type: Schema.Types.String,
-                required: true,
-                ref: 'User'
-            }
-        ],
+        username: {
+            type: Schema.Types.String,
+            required: true,
+        },
         createdAt: {
             type: Date,
             default: Date.now,
@@ -40,13 +37,10 @@ const ThoughtSchema = new Schema(
             default: Date.now,
             get: createdAtVal => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
         },
-        username: [
-            {
-                type: Schema.Types.String,
-                required: true,
-                ref: 'User'
-            }
-        ],
+        username: {
+            type: Schema.Types.String,
+            required: true,
+        },
         reactions: [ReactionSchema]
     },
     {
